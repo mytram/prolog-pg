@@ -7,14 +7,8 @@
 
 %% Hint: Use the predefined predicates is_list/1 and append/3
 
-my_flatten([], []).
-
-my_flatten([Head|Tail], Flattened) :-
-    is_list(Head),
+my_flatten(X, [X]) :- \+ is_list(X).
+my_flatten([Head|Tail], X) :-
     my_flatten(Head, FlatHead),
     my_flatten(Tail, FlatTail),
-    append(FlatHead, FlatTail, Flattened), !.
-%%
-my_flatten([Head|Tail], Flattened) :-
-    my_flatten(Tail, FlatTail),
-    append([Head], FlatTail, Flattened).
+    append(FlatHead, FlatTail, X).
