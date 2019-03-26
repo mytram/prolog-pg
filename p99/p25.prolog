@@ -1,11 +1,14 @@
-%% P23 (**) Extract a given number of randomly selected elements from a list.
-%% The selected items shall be put into a result list.
+%% P25 (*) Generate a random permutation of the elements of a list.
 %% Example:
-%% ?- rnd_select([a,b,c,d,e,f,g,h],3,L).
-%% L = [e,d,a]
+%% ?- rnd_permu([a,b,c,d,e,f],L.)
+%% L = [b,a,d,c,e,f]
 
-%%     Hint: Use the built-in random number generator random/2 and the
-%%     result of problem P20.
+%% Hint: Use the solution of problem P23.
+
+
+rnd_permu(L, X) :-
+    length(L, Len),
+    rnd_select(L, Len, X).
 
 remove_at(X, L, N, R) :-
     Len is N - 1,
